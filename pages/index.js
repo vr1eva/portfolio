@@ -38,7 +38,7 @@ export default function Home() {
       <div className={styles.skills}>
         <span>We know how to use </span>
         <span style={{color: currentSkill.color}}>{currentSkill.name} </span> 
-        <span> and we love to work remotely from people all around the world.</span>
+        <span> and we love to work remotely with people from all around the world.</span>
       </div>
 
       <div className={styles.contact}>
