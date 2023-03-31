@@ -1,0 +1,61 @@
+.name {
+    margin: 0;
+    font-size: 12px;
+  }
+  
+.url {
+    color: #04A29F;
+    font-size: 12px;
+}
+
+.description {
+    font-size: 12px;
+    color: #A3A3A3;
+    display:flex; 
+    gap: 4px;
+    align-items: center;
+    margin: 2px 0 0 0 ;
+}
+
+.image {
+    margin-top: 13px;
+}
+
+.divider {
+    background-color: #fafafa;
+    width: 100%;
+    padding: 0 36px;
+    height: 1px;
+}
+
+
+.heading {
+    font-size: 12px;
+    margin: 26px 0 12px 0;
+}
+
+.cta {
+    margin-top: 35px;
+}
+
+.header {
+    display: flex;
+    gap: 120px;
+}
+
+.designer {
+    color: #A3A3A3;
+    font-size: 12px;
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    align-self: flex-end;
+}
+
+.behance {
+    color: #1638DD
+}
+
+.project {
+    padding: 8px;
+}

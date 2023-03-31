@@ -1,59 +1,50 @@
-import Head from 'next/head';
-import styles from '../styles/Home.module.css';
+import styles from "../styles/Home.module.css"
+import { Inter } from 'next/font/google'
+import Projects from "./components/Projects"
+import { useState, useEffect } from 'react';
+
+const inter = Inter({ subsets: ['latin'] })
+
+const skills = [
+  { name: "TypeScript", color: "#3178C6" },
+  { name: "Next.js", color: "#000000" },
+  { name: "Vue", color: "#4FC08D" },
+  { name: "GraphQL", color: "#E10098" },
+  { name: "Figma", color: "#F24E1E" },
+  { name: "JavaScript", color: "#F7DF1E" },
+];
 
 export default function Home() {
+  const [currentSkill, setCurrentSkill] = useState(skills[0]);
+  useEffect(() => {
+    const intervalId = setInterval(() => {
+      const currentIndex = skills.indexOf(currentSkill);
+      const nextIndex = (currentIndex + 1) % skills.length;
+      setCurrentSkill(skills[nextIndex]);
+    }, 1000);
+
+    return () => clearInterval(intervalId);
+  }, [currentSkill, skills]);
+
   return (
-    <div className={styles.container}>
-      <Head>
-        <title>Create Next App</title>
-      </Head>
+    <div className={`${inter.className} ${styles.home}`} >
+      <h1 className={styles.h1}>Welcome to our online portfolio</h1>
+      <p className={styles.about}>We are Camila and Bruno and we work together shipping digital products 🚀</p>
+      
+     
 
-      <main className={styles.main}>
-        <h1 className={styles.title}>
-          Welcome to <a href="https://nextjs.org">Next.js!</a>
-        </h1>
+      <Projects />
 
-        <p className={styles.description}>
-          Get started by editing{' '}
-          <code className={styles.code}>pages/index.js</code>
-        </p>
+      <div className={styles.skills}>
+        <span>We know how to use </span>
+        <span style={{color: currentSkill.color}}>{currentSkill.name} </span> 
+        <span> and we love to work remotely from people all around the world.</span>
+      </div>
 
-        <div className={styles.grid}>
-          <a href="https://nextjs.org/docs" className={styles.card}>
-            <h3>Documentation &rarr;</h3>
-            <p>Find in-depth information about Next.js features and API.</p>
-          </a>
-
-          <a href="https://nextjs.org/learn" className={styles.card}>
-            <h3>Learn &rarr;</h3>
-            <p>Learn about Next.js in an interactive course with quizzes!</p>
-          </a>
-
-          <a
-            href="https://github.com/vercel/next.js/tree/master/examples"
-            className={styles.card}
-          >
-            <h3>Examples &rarr;</h3>
-            <p>Discover and deploy boilerplate example Next.js projects.</p>
-          </a>
-
-          <a
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className={styles.card}
-          >
-            <h3>Deploy &rarr;</h3>
-            <p>
-              Instantly deploy your Next.js site to a public URL with Vercel.
-            </p>
-          </a>
-        </div>
-      </main>
-
-      <footer className={styles.footer}>
-        <a href="https://next.new" target="_blank" rel="noopener noreferrer">
-          Created with&nbsp;<b>next.new</b>&nbsp;⚡️
-        </a>
-      </footer>
+      <div className={styles.contact}>
+        <p>This is our email if you want to hire us</p>
+        <a className={styles.email} href="mailto:hivr1eva@gmail.com">hivr1eva@gmail.com</a>
+      </div>
     </div>
   );
 }
